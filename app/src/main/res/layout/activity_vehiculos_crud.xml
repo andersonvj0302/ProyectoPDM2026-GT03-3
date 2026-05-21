@@ -32,138 +32,84 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/tvLabelCliente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="VEHICULO 01"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
-
-    <com.google.android.material.card.MaterialCardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="#F5F0F6"
-        app:layout_constraintTop_toBottomOf="@id/tvLabelCliente">
+        android:layout_height="0dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="NUEVO VEHÍCULO"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="VIN (Chasis)" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etVin"
+                style="@style/InputFieldStyle"
+                android:hint="Ej. 1A2B3C..." />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="Placa" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlaca"
+                style="@style/InputFieldStyle"
+                android:hint="Ej. P123-456" />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="Marca" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMarca"
+                style="@style/InputFieldStyle"
+                android:hint="Ej. Toyota" />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="Modelo" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etModelo"
+                style="@style/InputFieldStyle"
+                android:hint="Ej. Corolla 2024" />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="Dueño (Cliente)" />
+            <Spinner
+                android:id="@+id/spClientes"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_input_bg"
+                android:padding="8dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardar"
+                style="@style/SolidActionButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:layout_marginBottom="24dp"
+                android:text="GUARDAR VEHÍCULO" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="#E1D5E7"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_letter_a"
-                    app:shapeAppearanceOverlay="@style/CircleImage" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/avatar"
-                    android:layout_marginStart="12dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Header"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Subhead"
-                        android:textColor="#666666" />
-                </LinearLayout>
-            </RelativeLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="#EBE4EF"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_shapes_placeholder" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Subtitle"
-                    android:textColor="#666666" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-                    android:textColor="#333333" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="ELIMINAR"
-                        android:textColor="#6750A4"
-                        app:strokeColor="#CCCCCC" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnEditar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#6750A4"
-                        android:text="EDITAR"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#B00020"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

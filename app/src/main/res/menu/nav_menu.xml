@@ -1,31 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"> <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/nav_inbox"
-        android:icon="@drawable/ic_inbox"
-        android:title="Inbox"
-        app:actionViewClass="android.widget.TextView" />
-    <item
-        android:id="@+id/nav_outbox"
-        android:icon="@drawable/ic_outbox"
-        android:title="Outbox" />
-    <item
-        android:id="@+id/nav_favorites"
-        android:icon="@drawable/ic_favorite"
-        android:title="Favorites" />
-    <item
-        android:id="@+id/nav_trash"
-        android:icon="@drawable/ic_delete"
-        android:title="Trash" />
-</group>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Labels">
+    <item android:title="Módulos">
         <menu>
-            <item
-                android:id="@+id/label_1"
-                android:icon="@drawable/ic_folder"
-                android:title="Inicio" />
             <item
                 android:id="@+id/nav_clientes"
                 android:icon="@drawable/ic_folder"
@@ -46,6 +23,28 @@
                 android:id="@+id/nav_facturacion"
                 android:icon="@drawable/ic_folder"
                 android:title="Facturacion" />
+            <item
+                android:id="@+id/nav_quejas"
+                android:icon="@drawable/ic_folder"
+                android:title="Quejas Post-Venta" />
+            <item
+                android:id="@+id/nav_tracking"
+                android:icon="@drawable/ic_folder"
+                android:title="Tracking Reparación" />
+            <item
+                android:id="@+id/nav_crear_dueno"
+                android:icon="@drawable/ic_profile_placeholder"
+                android:title="Crear Usuario Dueño" />
         </menu>
     </item>
+
+    <item android:title="Sesión">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_delete"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+
 </menu>

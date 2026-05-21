@@ -12,62 +12,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Autotechs">
         <activity
-            android:name=".inicio"
+            android:name=".ui.inicio"
             android:exported="false" />
         <activity
-            android:name=".registrarse"
+            android:name=".ui.registrarse"
             android:exported="false" />
         <activity
-            android:name=".iniciar_sesion"
+            android:name=".ui.iniciar_sesion"
             android:exported="false" />
         <activity
-            android:name=".ClientesActivity"
+            android:name=".ui.CrearDuenoActivity"
+            android:exported="false"
+            android:label="Crear Dueño" />
+        <activity
+            android:name=".ui.ClientesActivity"
             android:exported="false"
             android:label="Clientes" />
         <activity
-            android:name=".Vehiculos"
+            android:name=".ui.Vehiculos"
             android:exported="false"
             android:label="Vehiculos" />
         <activity
-            android:name=".Siniestros"
+            android:name=".ui.Siniestros"
             android:exported="false"
             android:label="Siniestros" />
         <activity
-            android:name=".Inventario"
+            android:name=".ui.Inventario"
             android:exported="false"
             android:label="Inventario" />
         <activity
-            android:name=".Facturacion"
+            android:name=".ui.Facturacion"
             android:exported="false"
             android:label="Facturacion" />
 
-        <activity android:name=".Clientes_crud" />
-        <activity android:name=".Vehiculos_crud" />
-        <activity android:name=".Siniestros_crud" />
-        <activity android:name=".Inventario_crud" />
-        <activity android:name=".Facturacion_crud" />
+        <activity android:name=".ui.Clientes_crud" />
+        <activity android:name=".ui.Vehiculos_crud" />
+        <activity android:name=".ui.Siniestros_crud" />
+        <activity android:name=".ui.Inventario_crud" />
+        <activity android:name=".ui.Facturacion_crud" />
 
-        <activity android:name=".Clientes_editar" />
-        <activity android:name=".Vehiculos_editar" />
-        <activity android:name=".Siniestros_editar" />
-        <activity android:name=".Inventario_editar" />
-        <activity android:name=".Facturacion_editar" />
-
-
-
+        <activity android:name=".ui.Clientes_editar" />
+        <activity android:name=".ui.Vehiculos_editar" />
+        <activity android:name=".ui.Siniestros_editar" />
+        <activity android:name=".ui.Inventario_editar" />
+        <activity android:name=".ui.Facturacion_editar" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
-
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.TallerMonitorActivity" android:exported="false" />
+        <activity android:name=".ui.FacturacionActivity" android:exported="false" />
+        <activity android:name=".ui.QuejasActivity" android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

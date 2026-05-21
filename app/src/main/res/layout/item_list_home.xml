@@ -4,22 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="0dp"
-    app:cardBackgroundColor="#FDF8FF">
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#1E1E1E">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="12dp"
+        android:gravity="center_vertical">
 
-        <ImageView
-            android:layout_width="100dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_vehiculo"
+            android:layout_width="80dp"
             android:layout_height="60dp"
-            android:background="#EBE4EF"
-            android:padding="10dp"
-            android:src="@drawable/ic_shapes_placeholder" />
+            android:background="#2A2A2A"
+            android:padding="4dp"
+            android:src="@drawable/img_car_sedan"
+            android:scaleType="fitCenter"
+            app:shapeAppearanceOverlay="@style/RoundedImageStyle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,19 +33,22 @@
             android:layout_marginStart="16dp">
 
             <TextView
+                android:id="@+id/txt_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="List item"
-                android:textColor="#000000"
+                android:text="Toyota Corolla"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txt_descripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Supporting line text lorem ipsum dolor sit amet, consectetur."
-                android:textColor="#444444"
-                android:textSize="14sp" />
+                android:text="Reparación del sistema de inyección"
+                android:textColor="#CCCCCC"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

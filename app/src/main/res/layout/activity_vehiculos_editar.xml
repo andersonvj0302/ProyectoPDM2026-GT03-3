@@ -43,7 +43,7 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,82 +51,86 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvSubtitleLabel"
+                android:id="@+id/tvLabelEditar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="VEHICULO 01"
+                android:text="EDITAR VEHÍCULO"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvField1Label"
                 style="@style/InputFieldLabelStyle"
-                android:text="Nombre" />
+                android:text="VIN (No editable)" />
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etField1"
+                android:id="@+id/etVin"
+                style="@style/InputFieldStyle"
+                android:enabled="false" />
+
+            <TextView
+                style="@style/InputFieldLabelStyle"
+                android:text="Placa" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlaca"
                 style="@style/InputFieldStyle" />
 
             <TextView
-                android:id="@+id/tvField2Label"
                 style="@style/InputFieldLabelStyle"
-                android:text="Data" />
+                android:text="Marca" />
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etField2"
+                android:id="@+id/etMarca"
                 style="@style/InputFieldStyle" />
 
             <TextView
-                android:id="@+id/tvField3Label"
                 style="@style/InputFieldLabelStyle"
-                android:text="Data" />
+                android:text="Modelo" />
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etField3"
+                android:id="@+id/etModelo"
                 style="@style/InputFieldStyle" />
 
             <TextView
-                android:id="@+id/tvField4Label"
                 style="@style/InputFieldLabelStyle"
-                android:text="Data" />
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etField4"
-                style="@style/InputFieldStyle" />
+                android:text="Dueño (Cliente)" />
+            <Spinner
+                android:id="@+id/spClientes"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_input_bg"
+                android:padding="8dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="32dp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:orientation="horizontal"
                 android:layout_marginBottom="24dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBorrar"
                     style="@style/OutlinedActionButtonStyle"
-                    android:text="BORRAR" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="ELIMINAR"
+                    android:textColor="#B00020"
+                    app:strokeColor="#B00020" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnEditar"
+                    android:id="@+id/btnActualizar"
                     style="@style/SolidActionButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="EDITAR" />
+                    android:text="ACTUALIZAR" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#B00020"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,17 +36,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Header"
+                    android:text="Nombre del Cliente"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Subhead"
+                    android:text="DUI: 00000000-0"
                     android:textColor="#666666"
                     android:textSize="14sp" />
             </LinearLayout>

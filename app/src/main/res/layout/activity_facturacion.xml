@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#B00020"
-            app:title="FACTURACION"
+            app:title="FACTURACIÓN"
             app:titleCentered="true"
             app:titleTextColor="@android:color/white"
             app:navigationIcon="@drawable/ic_back"
@@ -40,54 +41,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="LISTA DE FACTURAS"
+        android:text="HISTORIAL DE TRANSACCIONES"
         android:textColor="#62B2FD"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFacturas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:paddingHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/tvListaTitulo"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp">
-
-            <include layout="@layout/item_cliente_card" />
-            <include layout="@layout/item_cliente_card" />
-            <include layout="@layout/item_cliente_card" />
-            <include layout="@layout/item_cliente_card" />
-
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_cliente_card" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnCrearNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:text="CREAR NUEVO"
+        android:text="NUEVO PAGO"
         android:textColor="#49454F"
         app:backgroundTint="#E8DEF8"
         app:icon="@drawable/ic_star"
         app:iconTint="#49454F"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#B00020"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
