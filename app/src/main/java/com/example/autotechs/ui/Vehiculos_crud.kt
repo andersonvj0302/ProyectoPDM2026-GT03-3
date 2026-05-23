@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.autotechs.data.local.AppDatabase
 import com.example.autotechs.data.local.entity.ClienteEntity
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.VehiculoRepository
 import com.example.autotechs.data.repository.ClienteRepository
 import com.example.autotechs.databinding.ActivityVehiculosCrudBinding
@@ -58,8 +59,9 @@ class Vehiculos_crud : AppCompatActivity() {
 
     private fun setupViewModel() {
         val database = AppDatabase.getDatabase(this)
-        val vehiculoRepository = VehiculoRepository(database.vehiculoDao())
-        val clienteRepository = ClienteRepository(database.clienteDao())
+        val apiService = RetrofitClient.apiService
+        val vehiculoRepository = VehiculoRepository(database.vehiculoDao(), apiService)
+        val clienteRepository = ClienteRepository(database.clienteDao(), apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return VehiculoViewModel(vehiculoRepository, clienteRepository) as T

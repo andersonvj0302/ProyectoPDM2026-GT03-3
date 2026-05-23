@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.autotechs.data.local.AppDatabase
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.AdministracionRepository
 import com.example.autotechs.databinding.ActivityFacturacionCrudBinding
 import com.example.autotechs.domain.model.Poliza
@@ -36,7 +37,7 @@ class FacturacionActivity : AppCompatActivity() {
 
         // Configuración manual del ViewModel
         val database = AppDatabase.getDatabase(this)
-        val repository = AdministracionRepository(database.administracionDao())
+        val repository = AdministracionRepository(database.administracionDao(), RetrofitClient.apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return AdministracionViewModel(repository) as T

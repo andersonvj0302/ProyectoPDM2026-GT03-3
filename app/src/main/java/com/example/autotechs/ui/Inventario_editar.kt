@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.autotechs.data.local.AppDatabase
 import com.example.autotechs.data.local.entity.MaterialEntity
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.MaterialRepository
 import com.example.autotechs.databinding.ActivityInventarioEditarBinding
 import kotlinx.coroutines.launch
@@ -52,7 +53,7 @@ class Inventario_editar : AppCompatActivity() {
 
         // Configurar manual del ViewModel
         val database = AppDatabase.getDatabase(this)
-        val repository = MaterialRepository(database.materialDao())
+        val repository = MaterialRepository(database.materialDao(), RetrofitClient.apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MaterialViewModel(repository) as T

@@ -1,3 +1,5 @@
+package com.example.autotechs.ui
+
 import android.graphics.Color
 import android.os.Bundle
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.autotechs.data.local.AppDatabase
 import com.example.autotechs.data.local.SessionManager
 import com.example.autotechs.data.local.entity.FaseReparacionEntity
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.TallerRepository
 import com.example.autotechs.data.repository.MaterialRepository
 import com.example.autotechs.databinding.ActivityTallerMonitorBinding
@@ -49,8 +52,9 @@ class TallerMonitorActivity : AppCompatActivity() {
 
 
         val database = AppDatabase.getDatabase(this)
-        val repository = TallerRepository(database.tallerDao())
-        val materialRepository = MaterialRepository(database.materialDao())
+        val apiService = RetrofitClient.apiService
+        val repository = TallerRepository(database.tallerDao(), apiService)
+        val materialRepository = MaterialRepository(database.materialDao(), apiService)
         
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -120,7 +124,8 @@ class TallerMonitorActivity : AppCompatActivity() {
 
             val puedeInteractuar = (fase.orden == primeraFaseIncompleta?.orden)
 
-            if (fase.estado != "COMPLETADO") {
+            // Si está en modo lectura (Cliente/Aseguradora), no mostrar botones de acción
+            if (!modoLectura && fase.estado != "COMPLETADO") {
                 if (fase.orden == 6 && fase.estado == "EN_PROCESO") {
                     // Diseño interactivo de doble botón para Control de Calidad
                     val layoutBotones = LinearLayout(this).apply {

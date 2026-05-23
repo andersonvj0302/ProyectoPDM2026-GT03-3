@@ -12,6 +12,10 @@ interface ClienteDao {
     @Query("SELECT * FROM clientes WHERE id = :id")
     suspend fun getClienteById(id: Int): ClienteEntity?
 
+    /** Busca un cliente por email — usado para tracking de reparación del cliente */
+    @Query("SELECT * FROM clientes WHERE email = :email LIMIT 1")
+    suspend fun getClienteByEmail(email: String): ClienteEntity?
+
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

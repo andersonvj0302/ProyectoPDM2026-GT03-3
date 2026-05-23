@@ -15,6 +15,10 @@ interface VehiculoDao {
     @Query("SELECT * FROM vehiculos WHERE clienteId = :clienteId")
     fun getVehiculosByCliente(clienteId: Int): Flow<List<VehiculoEntity>>
 
+    /** Obtiene un vehículo por clienteId (una sola vez, no reactivo) — usado para tracking */
+    @Query("SELECT * FROM vehiculos WHERE clienteId = :clienteId LIMIT 1")
+    suspend fun getVehiculoByClienteIdOnce(clienteId: Int): VehiculoEntity?
+
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

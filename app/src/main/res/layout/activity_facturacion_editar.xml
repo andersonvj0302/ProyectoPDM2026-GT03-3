@@ -64,7 +64,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:textColorHint="#AAAAAA"
+                        app:hintTextColor="@android:color/white"
+                        app:boxStrokeColor="#62B2FD">
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etExpedienteId"
                             android:layout_width="match_parent"
@@ -78,7 +81,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:textColorHint="#AAAAAA"
+                        app:hintTextColor="@android:color/white"
+                        app:boxStrokeColor="#62B2FD">
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etMonto"
                             android:layout_width="match_parent"

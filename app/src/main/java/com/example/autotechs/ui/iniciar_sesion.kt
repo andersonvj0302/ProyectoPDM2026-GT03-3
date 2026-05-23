@@ -68,7 +68,11 @@ class iniciar_sesion : AppCompatActivity() {
             viewModel.login(email, pass)
         }
 
-        // Opción para ir a registro (podríamos añadir un TextView en el XML, por ahora lo dejamos así)
+        // Enlace para ir a la pantalla de registro
+        binding.tvIrARegistro.setOnClickListener {
+            val intent = Intent(this, registrarse::class.java)
+            startActivity(intent)
+        }
 
         lifecycleScope.launch {
             viewModel.authState.collect { state ->

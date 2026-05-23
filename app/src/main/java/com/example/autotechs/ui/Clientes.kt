@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.autotechs.data.local.AppDatabase
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.ClienteRepository
 import com.example.autotechs.databinding.ActivityClientesBinding
 import kotlinx.coroutines.launch
@@ -45,7 +46,8 @@ class ClientesActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val database = AppDatabase.getDatabase(this)
-        val repository = ClienteRepository(database.clienteDao())
+        // Se inyecta el ApiService de Retrofit para sincronización con API REST
+        val repository = ClienteRepository(database.clienteDao(), RetrofitClient.apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return ClienteViewModel(repository) as T

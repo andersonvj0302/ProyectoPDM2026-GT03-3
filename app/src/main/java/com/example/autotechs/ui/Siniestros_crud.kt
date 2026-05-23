@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.autotechs.data.local.AppDatabase
 import com.example.autotechs.data.local.entity.ClienteEntity
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.RecepcionRepository
 import com.example.autotechs.data.repository.ClienteRepository
 import com.example.autotechs.databinding.ActivitySiniestrosCrudBinding
@@ -27,8 +28,9 @@ class Siniestros_crud : AppCompatActivity() {
 
         // Configuración manual del ViewModel (con Hilt por ahora para mantenerlo simple)
         val database = AppDatabase.getDatabase(this)
-        val repository = RecepcionRepository(database.recepcionDao())
-        val clienteRepository = ClienteRepository(database.clienteDao())
+        val apiService = RetrofitClient.apiService
+        val repository = RecepcionRepository(database.recepcionDao(), apiService)
+        val clienteRepository = ClienteRepository(database.clienteDao(), apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return SiniestrosViewModel(repository, clienteRepository) as T
@@ -49,6 +51,32 @@ class Siniestros_crud : AppCompatActivity() {
                 val adapter = ArrayAdapter(this@Siniestros_crud, android.R.layout.simple_spinner_item, nombres)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spClientes.adapter = adapter
+
+                // Listener: al seleccionar un cliente, auto-llenar datos de su vehículo
+                binding.spClientes.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                        val clienteSeleccionado = listaClientes[position]
+                        // Buscar vehículo del cliente en la base de datos
+                        lifecycleScope.launch {
+                            val db = AppDatabase.getDatabase(this@Siniestros_crud)
+                            val vehiculo = db.vehiculoDao().getVehiculoByClienteIdOnce(clienteSeleccionado.id)
+                            if (vehiculo != null) {
+                                // Auto-llenar los campos del vehículo
+                                binding.etVin.setText(vehiculo.vin)
+                                binding.etPlaca.setText(vehiculo.placa)
+                                binding.etMarca.setText(vehiculo.marca)
+                                binding.etModelo.setText(vehiculo.modelo)
+                            } else {
+                                // Limpiar campos si no tiene vehículo registrado
+                                binding.etVin.setText("")
+                                binding.etPlaca.setText("")
+                                binding.etMarca.setText("")
+                                binding.etModelo.setText("")
+                            }
+                        }
+                    }
+                    override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+                }
             }
         }
 

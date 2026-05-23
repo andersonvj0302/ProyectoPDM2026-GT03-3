@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.autotechs.data.local.AppDatabase
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.AdministracionRepository
 import com.example.autotechs.databinding.ActivityFacturacionBinding
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ class Facturacion : AppCompatActivity() {
 
         // Configuración manual del ViewModel
         val database = AppDatabase.getDatabase(this)
-        val repository = AdministracionRepository(database.administracionDao())
+        val repository = AdministracionRepository(database.administracionDao(), RetrofitClient.apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return AdministracionViewModel(repository) as T

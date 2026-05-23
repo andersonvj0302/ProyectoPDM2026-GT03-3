@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.autotechs.data.local.AppDatabase
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.MaterialRepository
 import com.example.autotechs.databinding.ActivityInventarioCrudBinding
 
@@ -38,7 +39,7 @@ class Inventario_crud : AppCompatActivity() {
 
         // Configuración manual del ViewModel
         val database = AppDatabase.getDatabase(this)
-        val repository = MaterialRepository(database.materialDao())
+        val repository = MaterialRepository(database.materialDao(), RetrofitClient.apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MaterialViewModel(repository) as T

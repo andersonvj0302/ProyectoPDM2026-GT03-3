@@ -82,6 +82,19 @@
                 android:backgroundTint="#A9081c"
                 android:text="Iniciar Sesion" />
 
+            <TextView
+                android:id="@+id/tvIrARegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="¿No tienes cuenta? Regístrate aquí"
+                android:textColor="#62B2FD"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/open_sans_light"
+                android:clickable="true"
+                android:focusable="true" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

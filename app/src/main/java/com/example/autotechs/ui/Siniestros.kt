@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.autotechs.data.local.AppDatabase
+import com.example.autotechs.data.remote.RetrofitClient
 import com.example.autotechs.data.repository.RecepcionRepository
 import com.example.autotechs.data.repository.ClienteRepository
 import com.example.autotechs.databinding.ActivitySiniestrosBinding
@@ -33,8 +34,9 @@ class Siniestros : AppCompatActivity() {
 
         // Configuración manual del ViewModel
         val database = AppDatabase.getDatabase(this)
-        val repository = RecepcionRepository(database.recepcionDao())
-        val clienteRepository = ClienteRepository(database.clienteDao())
+        val apiService = RetrofitClient.apiService
+        val repository = RecepcionRepository(database.recepcionDao(), apiService)
+        val clienteRepository = ClienteRepository(database.clienteDao(), apiService)
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return SiniestrosViewModel(repository, clienteRepository) as T
